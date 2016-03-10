@@ -1,0 +1,11 @@
+this package contrains three interfaces.  
+
+I use abstract factory pattern to create every object, and use fascade pattern to construct the relationship of these objects.
+
+Factorys implement the interface IChartFactory.
+
+each factory contains two products, i.e. Renderer and Dataset.
+
+Renderer extends an abstract class "AbstractChartRenderer", whick implements the interface of IRenderer.
+
+Dataset implements the interface of IDataSet.

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/id_ly_statistic"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="10dp" >
+
+        <!-- Select a Date -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/id_btn_last_month"
+                android:layout_width="35dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="@dimen/sizeBetweenButtonInStatistic"
+                android:layout_marginRight="@dimen/sizeBetweenButtonInStatistic"
+                android:background="@drawable/last" />
+
+            <TextView
+                android:id="@+id/id_txt_date_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/sizeBetweenButtonInStatistic"
+                android:layout_marginRight="@dimen/sizeBetweenButtonInStatistic"
+                android:text="@string/str_date_select"
+                android:textSize="@dimen/textSizeInStatis" />
+
+            <Button
+                android:id="@+id/id_btn_next_month"
+                android:layout_width="35dp"
+                android:layout_height="25dp"
+                android:background="@drawable/next" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="10dp" >
+
+            <!-- left -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/txtSleep"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/str_avg_sleep"
+                    android:textSize="@dimen/textSizeInStatis" />
+
+                <TextView
+                    android:id="@+id/txtSleeTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/str_time"
+                    android:textSize="@dimen/textSizeInStatis" />
+            </LinearLayout>
+            <!-- right -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/str_sleep_in_daytime"
+                    android:textSize="@dimen/textSizeInStatis" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/str_sleep_in_night"
+                    android:textSize="@dimen/textSizeInStatis" />
+            </LinearLayout>
+            <!-- time -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/txtTimeInDay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/str_time"
+                    android:textSize="@dimen/textSizeInStatis" />
+
+                <TextView
+                    android:id="@+id/txtTimeInNight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/str_time"
+                    android:textSize="@dimen/textSizeInStatis" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- put chart -->
+
+    <LinearLayout
+        android:id="@+id/lyStatisticChart"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/heightOfChart"
+        android:orientation="vertical"
+        android:paddingTop="10dp" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lyButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:weightSum="3" >
+
+        <Button
+            android:id="@+id/btnPerDay"
+            style="@style/buttonsInStatistic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/sizeBetweenButtonInStatistic"
+            android:layout_marginRight="@dimen/sizeBetweenButtonInStatistic"
+            android:text="@string/str_per_day" />
+
+        <Button
+            android:id="@+id/btnPerWeek"
+            style="@style/buttonsInStatistic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/sizeBetweenButtonInStatistic"
+            android:layout_marginRight="@dimen/sizeBetweenButtonInStatistic"
+            android:text="@string/str_per_week" />
+
+        <Button
+            android:id="@+id/btnPerMonth"
+            style="@style/buttonsInStatistic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_per_month" />
+    </LinearLayout>
+
+</LinearLayout>

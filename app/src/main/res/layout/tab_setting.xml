@@ -1,0 +1,107 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lySetting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingEnd="5dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingStart="5dp" >
+
+    <!-- 显示用户头像 -->
+
+    <ImageView
+        android:id="@+id/id_img_portrait"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:background="#aaa"
+        android:baselineAlignBottom="true"
+        android:contentDescription="@string/str_portrait" />
+
+    <!-- 显示用户帐号 -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/str_user"
+            android:textSize="@dimen/textSizeInSetting" />
+
+        <TextView
+            android:id="@+id/id_txt_cur_user"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp" />
+    </LinearLayout>
+    <!-- 显示用户电话号码 -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/str_show_phonenumber"
+        android:textSize="@dimen/textSizeInSetting" />
+    <!-- 用户修改密码 -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/str_update_password"
+        android:textSize="@dimen/textSizeInSetting" />
+
+    <!-- add device SID -->
+
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_sid"
+            android:textSize="@dimen/textSizeInRegister" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/id_edit_sid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="15"
+                android:enabled="false"
+                android:hint=""
+                android:textSize="@dimen/textSizeInRegister" />
+
+            <Button
+                android:id="@+id/btnBlueTeeth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/str_bluetooth"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- exit current user -->
+
+    <Button
+        android:id="@+id/id_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/str_exit" />
+    <!-- 关于APP的介绍 -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/str_about"
+        android:textSize="@dimen/textSizeInSetting" />
+
+</LinearLayout>

@@ -1,0 +1,79 @@
+<resources>
+
+    <string name="app_name">Project</string>
+    <string name="str_switch_device">切换设备</string>
+    <string name="str_watch_device">查看设备</string>
+    <string name="str_description"></string>
+    <string name="str_check_net">网络无法连接</string>
+
+    <!-- Login activity -->
+    <string name="str_username">请输入帐号或手机号</string>
+    <string name="str_password">请输入密码</string>
+    <string name="str_login">登录</string>
+    <string name="str_register"><u>注册</u></string>
+    <string name="str_forget_password"><u>忘记密码</u></string>
+    <string name="str_login_error">登录出错</string>
+
+    <!-- Register activity -->
+    <string name="str_username1">用户名(必填)</string>
+    <string name="str_password1">密码(必填)</string>
+    <string name="str_repassword">确认密码(必填)</string>
+    <string name="str_sid">设备号(可选,必须由蓝牙添加)</string>
+    <string name="str_email">邮箱地址(可选)</string>
+    <string name="str_bluetooth">蓝牙</string>
+    <string name="str_phone_num">手机号码(可选)</string>
+    <string name="strAuthCode">验证码(必填)</string>
+    <string name="str_get_auth_code">获得验证码</string>
+    <string name="str_check_password">两次密码不一样</string>
+    <string name="str_register_error">注册用户失败</string>
+
+    <!-- Main Activity -->
+    <string name="str_last_data">实时数据</string>
+    <string name="str_day_data">今日统计</string>
+    <string name="str_statistic">历史统计</string>
+    <string name="str_sleep_helper">助眠</string>
+    <string name="str_setting">设置</string>
+
+    <!-- Activity Song Add -->
+    <string name="str_add_song">添加音乐</string>
+
+    <!-- Activity Device Show -->
+    <string name="str_cur_device_name">设备名称:</string>
+    <string name="str_cur_device_sid">设备编号:</string>
+    <string name="str_cur_device_memory">存储空间：</string>
+    <string name="str_cur_device_power">剩余电量：</string>
+    <string name="str_cur_device_threshold">阈值：</string>
+    <string name="str_cur_device_last_time">上次更新时间：</string>
+
+    <!-- Activity Add Device -->
+    <string name="str_add_device_by_bluetooth">添加设备</string>
+
+    <!-- Statistic -->
+    <string name="str_per_day">每天</string>
+    <string name="str_per_week">每周</string>
+    <string name="str_per_month">每月</string>
+    <string name="str_sleep_in_daytime">白天时间</string>
+    <string name="str_sleep_in_night">夜晚时间</string>
+    <string name="str_avg_sleep">平均睡眠时间</string>
+    <string name="str_time">12小时30分</string>
+    <string name="str_date_select">2015/09</string>
+
+    <!-- sleep helper -->
+    <string name="str_song_info">音乐信息</string>
+    <string name="str_pause">暂停</string>
+    <string name="str_play">播放</string>
+    <string name="str_stop">停止</string>
+    <string name="str_upload_to_device">上传</string>
+    <string name="str_delete_from_device">删除</string>
+    <string name="str_scan_auto">自动扫描</string>
+    <string name="str_update_error">更新失败</string>
+
+    <!-- setting view -->
+    <string name="str_user">用户名称：</string>
+    <string name="str_portrait">头像</string>
+    <string name="str_show_phonenumber">电话号码：</string>
+    <string name="str_update_password">修改密码</string>
+    <string name="str_exit">退出当前用户</string>
+    <string name="str_about">关于</string>
+
+</resources>

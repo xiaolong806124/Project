@@ -1,0 +1,72 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+    android:orientation="vertical"
+    tools:context=".activities.LoginActivity" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="@string/app_name"
+        android:textSize="8pt" />
+
+    <EditText
+        android:id="@+id/id_edit_username_in_login"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_launcher"
+        android:drawableStart="@drawable/ic_launcher"
+        android:hint="@string/str_username" />
+
+    <EditText
+        android:id="@+id/id_edit_password_in_login"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_launcher"
+        android:drawableStart="@drawable/ic_launcher"
+        android:hint="@string/str_password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/id_btn_login"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="30dp"
+        android:background="#0000ff"
+        android:text="@string/str_login" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="fill" >
+
+        <TextView
+            android:id="@+id/id_txt_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="0dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="0dp"
+            android:paddingStart="50dp"
+            android:paddingTop="20dp"
+            android:text="@string/str_register"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/id_txt_forget_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="0dp"
+            android:paddingLeft="150dp"
+            android:paddingRight="0dp"
+            android:paddingStart="150dp"
+            android:paddingTop="20dp"
+            android:text="@string/str_forget_password"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+</LinearLayout>

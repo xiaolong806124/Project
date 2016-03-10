@@ -1,0 +1,18 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="textSizeInRegister">12sp</dimen>
+    <dimen name="textSizeInSetting">15sp</dimen>
+    <dimen name="textSizeInMainBottom">13sp</dimen>
+    <!-- the height of chart showing in the view. -->
+    <dimen name="heightOfChart">320sp</dimen>
+
+    <color name="textColorInMainBottom">#eee</color>
+    <color name="colorInDataPicker">#a0a</color>
+
+    <dimen name="sizeBetweenButtonInStatistic">30dp</dimen>
+    <dimen name="textSizeInStatis">16sp</dimen>
+
+</resources>

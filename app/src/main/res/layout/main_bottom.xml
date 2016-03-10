@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_bottom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#6064BD"
+    android:baselineAligned="false"
+    android:paddingBottom="2dp" >
+
+    <!-- 实时数据 -->
+
+    <LinearLayout
+        android:id="@+id/id_tab_last_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/id_img_last_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:contentDescription="@string/str_description"
+            android:scaleType="matrix"
+            android:src="@drawable/tab_lastdata_pressed" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_last_data"
+            android:textColor="@color/textColorInMainBottom"
+            android:textSize="@dimen/textSizeInMainBottom" />
+    </LinearLayout>
+
+    <!-- 今日数据 -->
+
+    <LinearLayout
+        android:id="@+id/id_tab_day_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/id_img_day_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:contentDescription="@string/str_description"
+            android:scaleType="matrix"
+            android:src="@drawable/tab_daydata_normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_day_data"
+            android:textColor="@color/textColorInMainBottom"
+            android:textSize="@dimen/textSizeInMainBottom" />
+    </LinearLayout>
+
+    <!-- 统计信息 -->
+
+    <LinearLayout
+        android:id="@+id/id_tab_statistic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/id_img_statistic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:contentDescription="@string/str_description"
+            android:scaleType="matrix"
+            android:src="@drawable/tab_statistic_normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_statistic"
+            android:textColor="@color/textColorInMainBottom"
+            android:textSize="@dimen/textSizeInMainBottom" />
+    </LinearLayout>
+
+    <!-- 助眠 -->
+
+    <LinearLayout
+        android:id="@+id/id_tab_sleep_helper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/id_img_sleep_helper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:contentDescription="@string/str_description"
+            android:scaleType="matrix"
+            android:src="@drawable/tab_sleep_helper_normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_sleep_helper"
+            android:textColor="@color/textColorInMainBottom"
+            android:textSize="@dimen/textSizeInMainBottom" />
+    </LinearLayout>
+
+    <!-- 设置 -->
+
+    <LinearLayout
+        android:id="@+id/id_tab_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/id_img_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:contentDescription="@string/str_description"
+            android:scaleType="matrix"
+            android:src="@drawable/tab_settings_normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_setting"
+            android:textColor="@color/textColorInMainBottom"
+            android:textSize="@dimen/textSizeInMainBottom" />
+    </LinearLayout>
+
+</LinearLayout>

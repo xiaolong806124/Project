@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/id_txt_song_info"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:text="@string/str_song_info"
+        android:textSize="20sp" />
+
+    <SeekBar
+        android:id="@+id/id_seek_bar_of_song"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/id_btn_play_in_helper"
+            style="@style/buttonInSleepHelper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:tag="play"
+            android:text="@string/str_play" />
+
+        <Button
+            android:id="@+id/id_btn_stop"
+            style="@style/buttonInSleepHelper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="@string/str_stop" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/id_list_song"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+    </ListView>
+
+</LinearLayout>
