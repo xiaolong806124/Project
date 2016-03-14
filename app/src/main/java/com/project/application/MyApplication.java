@@ -1,9 +1,15 @@
 package com.project.application;
 
-import java.net.Socket;
-
+import android.app.Activity;
 import android.app.Application;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
+import android.widget.Toast;
+
+import com.project.data_process.SocketService;
+
+import java.net.Socket;
 
 /**
  * Created by zwl on 2015/9/9.
@@ -14,7 +20,7 @@ public class MyApplication extends Application {
      */
     public static String ipAddressWeb = "115.28.153.25";// "192.168.0.105";//
     // ;"219.224.156.137";//
-    public static String ipAddressTCP = "192.168.0.103";// "192.168.0.105";
+    public static String ipAddressTCP = "192.168.0.106";// "192.168.0.105";
     /**
      * TCP/IP Server's port used to communicate with clients.
      */
@@ -24,16 +30,21 @@ public class MyApplication extends Application {
      */
     public static String basePath = "http://" + ipAddressWeb + ":8080/Server";
     public static Socket socket;
+    public static SocketService socketService;
+    private ConnectivityManager conman;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        /*
-		 * if (isConnectedToNetwork()) { // check whether internet is connected.
-		 * // if connected, create Socket to connect server. // if not, give a
-		 * message to the user. creaeteSocket(); } else { Toast.makeText(this,
-		 * "please check internet", Toast.LENGTH_SHORT).show(); }
-		 */
+        super.onCreate();
+        // check whether internet is connected.
+        // if connected, create Socket to connect server.
+        // if not, give a message to the user.
+        if (isConnectedToNetwork()) {
+            creaeteSocket();
+        } else {
+            Toast.makeText(this, "please check internet", Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**
@@ -57,5 +68,24 @@ public class MyApplication extends Application {
                 }
             }
         }).start();
+    }
+
+    /**
+     * check whether net is working.
+     */
+    private boolean isConnectedToNetwork() {
+        ConnectivityManager conman = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = conman.getActiveNetworkInfo();
+
+        if (activeNetwork != null) { // connected to the internet
+            if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
+                // connected to wifi
+                return true;
+            } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
+                // connected to the mobile provider's data plan
+                return true;
+            }
+        }
+        return false;
     }
 }
