@@ -8,7 +8,6 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.app.FragmentActivity;
-import android.telecom.ConnectionService;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,14 +15,18 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 
 import com.project.R;
+import com.project.application.MyApplication;
 import com.project.data_process.SocketService;
 import com.project.others.Pager;
+
+import java.util.Timer;
 
 @SuppressLint("InflateParams")
 public class ActivityMain extends FragmentActivity {
 
     private String TAG = "ActivityMain";
-    private Intent service;
+
+    private ServiceConnection conn;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,10 +37,8 @@ public class ActivityMain extends FragmentActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         // init pagers in main activity.
         new Pager(ActivityMain.this).setPager();
-
         // Test. Bind service
-        service = new Intent(ActivityMain.this, SocketService.class);
-        bindService();
+        bindSocketService();
     }
 
     @Override
@@ -48,7 +49,9 @@ public class ActivityMain extends FragmentActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        destroyService();
+        // Disconnect the service.
+        if (conn != null)
+            destroySocketService();
     }
 
     @Override
@@ -74,25 +77,30 @@ public class ActivityMain extends FragmentActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void bindService() {
+
+    private void bindSocketService() {
         Log.i(TAG, "start a service to connect Socket");
-        bindService(service, conn, Context.BIND_AUTO_CREATE);
+
+        Intent intent1 = new Intent(ActivityMain.this, SocketService.class);
+
+        conn = new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                MyApplication.socketService = ((SocketService.MyBinder) service).getService();
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+                MyApplication.socketService = null;
+            }
+        };
+
+        bindService(intent1, conn, Context.BIND_AUTO_CREATE);
     }
 
-    private void destroyService(){
+    private void destroySocketService() {
         Log.i(TAG, "stop a service to connect Socket");
-        stopService(service);
+        if (conn != null)
+            unbindService(conn);
     }
-
-    private ServiceConnection conn = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-
-        }
-    };
 }

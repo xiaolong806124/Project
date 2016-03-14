@@ -11,7 +11,7 @@ public abstract class AbstractChartRenderer implements IRenderer {
 	 * create renderer for last data chart. (line style), i is scales' number.
 	 */
 	public XYMultipleSeriesRenderer buildRenderer(int scales) {
-		// set two scales in a thart.
+		// set two scales in a chart.
 		XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer(scales);
 
 		setRendererDefault(renderer);

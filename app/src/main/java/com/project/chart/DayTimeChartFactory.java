@@ -52,7 +52,7 @@ public class DayTimeChartFactory implements IChartFactory {
 			yValues.add(y);
 		}
 
-		dataset = new TimeChartDataset().buildDataset(titles, xValues, yValues);
+		dataset = new TimeChartDataset().buildDataSet(titles, xValues, yValues);
 
 		GraphicalView view = ChartFactory.getTimeChartView(context, dataset, renderer, "H:mm ");
 
@@ -60,6 +60,16 @@ public class DayTimeChartFactory implements IChartFactory {
 
 		setChartBound(dataset, renderer);
 		return view;
+	}
+
+	@Override
+	public GraphicalView buildChart(Context context, XYMultipleSeriesDataset dataSet) {
+		return null;
+	}
+
+	@Override
+	public GraphicalView buildChart(Context context, XYMultipleSeriesDataset dataSet, XYMultipleSeriesRenderer renderer) {
+		return null;
 	}
 
 	/**

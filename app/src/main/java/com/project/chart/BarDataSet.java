@@ -18,7 +18,7 @@ public class BarDataSet implements IDataSet {
 	 * @return the XY multiple bar dataset
 	 */
 	@Override
-	public XYMultipleSeriesDataset buildDataset(String[] titles, List<Date[]> xValues, List<double[]> yValues) {
+	public XYMultipleSeriesDataset buildDataSet(String[] titles, List<Date[]> xValues, List<double[]> yValues) {
 		XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
 		int length = titles.length;
 		for (int i = 0; i < length; i++) {

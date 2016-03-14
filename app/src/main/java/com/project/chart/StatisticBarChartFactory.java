@@ -31,13 +31,23 @@ public class StatisticBarChartFactory implements IChartFactory {
 		return view;
 	}
 
+	@Override
+	public GraphicalView buildChart(Context context, XYMultipleSeriesDataset dataSet) {
+		return null;
+	}
+
+	@Override
+	public GraphicalView buildChart(Context context, XYMultipleSeriesDataset dataSet, XYMultipleSeriesRenderer renderer) {
+		return null;
+	}
+
 	private void getDataSet() {
 		String[] titles = new String[] { "夜晚", "白天" };
 
 		List<double[]> values = new ArrayList<double[]>();
 		values.add(new double[] { 2, 3, 5, 4, 2, 1, 5, 6, 3, 5, 6, 3 });
 		values.add(new double[] { 2 + 1, 3 + 1, 5 + 1, 4 + 1, 2 + 1, 1 + 1, 5 + 1, 6 + 1, 4, 5, 12, 4 });
-		dataset = new BarDataSet().buildDataset(titles, null, values);
+		dataset = new BarDataSet().buildDataSet(titles, null, values);
 	}
 
 	private void setBounds(XYMultipleSeriesRenderer renderer) {

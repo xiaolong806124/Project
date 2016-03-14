@@ -6,5 +6,5 @@ import java.util.List;
 import org.achartengine.model.XYMultipleSeriesDataset;
 
 public interface IDataSet {
-	public XYMultipleSeriesDataset buildDataset(String[] titles, List<Date[]> xValues, List<double[]> yValues);
+	public XYMultipleSeriesDataset buildDataSet(String[] titles, List<Date[]> xValues, List<double[]> yValues);
 }
