@@ -53,7 +53,7 @@ public class SocketService extends Service {
                         outThread.start();
                         Log.i("Service", "create if");
                     } else {
-                        MyApplication.socket = new Socket(MyApplication.ipAddressTCP, MyApplication.port);
+                        MyApplication.socket = new Socket(MyApplication.ipAddressWIFI, MyApplication.port);
                         Log.i("Service", "create else");
                     }
                 } catch (IOException e) {
@@ -71,8 +71,12 @@ public class SocketService extends Service {
 
     @Override
     public void onDestroy() {
-        inputThread.setFlag(false);
-        outThread.setFlag(false);
+        if (inputThread != null) {
+            inputThread.setFlag(false);
+        }
+        if (outThread != null) {
+            outThread.setFlag(false);
+        }
         super.onDestroy();
     }
 

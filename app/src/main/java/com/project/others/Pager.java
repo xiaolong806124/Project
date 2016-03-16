@@ -55,7 +55,7 @@ public class Pager {
 		listTabs.add((LinearLayout) ((FragmentActivity) context).findViewById(R.id.id_tab_setting));
 
 		// catch for the order added to list. if you change, please change
-		// correponting mapping in class Pager;
+		// corresponding mapping in class Pager;
 		listImg.add((ImageView) ((FragmentActivity) context).findViewById(R.id.id_img_last_data));
 		listImg.add((ImageView) ((FragmentActivity) context).findViewById(R.id.id_img_day_data));
 		listImg.add((ImageView) ((FragmentActivity) context).findViewById(R.id.id_img_statistic));

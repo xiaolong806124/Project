@@ -93,9 +93,9 @@ public class FragmentLastData extends Fragment {
      * @param index the index of data packages.
      */
     private void sendCommand(int index) {
-        // the service should not be a null, otherwise, throw a 'null pointer'
-        // error.
-        if (MyApplication.socketService != null) {
+        // 1. the service should not be null, otherwise, throw a 'null pointer' error.
+        // 2. InputThread, which is created if WIFI Server is working,could not be null.
+        if ((MyApplication.socketService) != null && (MyApplication.socketService.getInputThread() != null)) {
             // set handler for the service.
             MyApplication.socketService.getInputThread().setHandler(handler);
             // get the command package.

@@ -20,7 +20,7 @@ public class MyApplication extends Application {
      */
     public static String ipAddressWeb = "115.28.153.25";// "192.168.0.105";//
     // ;"219.224.156.137";//
-    public static String ipAddressTCP = "192.168.0.106";// "192.168.0.105";
+    public static String ipAddressWIFI = "192.168.0.106";// "192.168.0.105";
     /**
      * TCP/IP Server's port used to communicate with clients.
      */
@@ -41,7 +41,7 @@ public class MyApplication extends Application {
         // if connected, create Socket to connect server.
         // if not, give a message to the user.
         if (isConnectedToNetwork()) {
-            creaeteSocket();
+            createSocket();
         } else {
             Toast.makeText(this, "please check internet", Toast.LENGTH_SHORT).show();
         }
@@ -50,7 +50,7 @@ public class MyApplication extends Application {
     /**
      * connect to server by socket based on TCP/IP protocol.
      */
-    public void creaeteSocket() {
+    public void createSocket() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -59,7 +59,7 @@ public class MyApplication extends Application {
                 for (int i = 0; i < 5; i++) {
                     try {
                         if (null == socket || !socket.isConnected()) {
-                            socket = new Socket(ipAddressTCP, port);
+                            socket = new Socket(ipAddressWIFI, port);
                             Log.i("Service", "Application socket");
                         } else
                             break;
