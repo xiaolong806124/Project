@@ -1,9 +1,15 @@
 package com.project.others;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.project.R;
 import com.project.activities.FragmentDayData;
@@ -12,132 +18,152 @@ import com.project.activities.FragmentSetting;
 import com.project.activities.FragmentSleepHelper;
 import com.project.activities.FragmentStatistic;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+public class Pager implements OnClickListener {
+    private Context context;
+    private LinearLayout lyTabLastData, lyTabDayData, lyTabStatistic, lyTabSleepHelper, lyTabSetting;
+    private ImageView imgLastData, imgDayData, imgStatistic, imgSleepHelper, imgSetting;
+    private Fragment fragmentLastData, fragmentDayData, fragmentStatistic, fragmentSleepHelper, fragmentSetting;
 
-@SuppressLint("InflateParams")
-public class Pager {
-	private ViewPager mTabPager;
-	private Map<Integer, Drawable> mapImages = new HashMap<>();
-	private List<ImageView> listImg = new ArrayList<>();
-	private List<LinearLayout> listTabs = new ArrayList<>();
-	private Context context;
+    public Pager(Context context) {
+        this.context = context;
+    }
 
-	public Pager(Context context) {
-		this.context = context;
-	}
+    /**
+     * set page selector.
+     */
+    public void setPager() {
+        initView();
+        initEvent();
+        setSelect(0);
+    }
 
-	/**
-	 * set page selector.
-	 */
-	@SuppressWarnings("deprecation")
-	public void setPager() {
+    private void initEvent() {
+        lyTabDayData.setOnClickListener(this);
+        lyTabLastData.setOnClickListener(this);
+        lyTabStatistic.setOnClickListener(this);
+        lyTabSleepHelper.setOnClickListener(this);
+        lyTabSetting.setOnClickListener(this);
+    }
 
-		mTabPager = (ViewPager) ((FragmentActivity) context).findViewById(R.id.id_tabpager);
+    private void initView() {
+        lyTabLastData = (LinearLayout) ((FragmentActivity) context).findViewById(R.id.id_tab_last_data);
+        lyTabDayData = (LinearLayout) ((FragmentActivity) context).findViewById(R.id.id_tab_day_data);
+        lyTabStatistic = (LinearLayout) ((FragmentActivity) context).findViewById(R.id.id_tab_statistic);
+        lyTabSleepHelper = (LinearLayout) ((FragmentActivity) context).findViewById(R.id.id_tab_sleep_helper);
+        lyTabSetting = (LinearLayout) ((FragmentActivity) context).findViewById(R.id.id_tab_setting);
 
-		// avoid the fragment recreated during app working.
-		mTabPager.setOffscreenPageLimit(5);
+        imgLastData = (ImageView) ((FragmentActivity) context).findViewById(R.id.id_img_last_data);
+        imgDayData = (ImageView) ((FragmentActivity) context).findViewById(R.id.id_img_day_data);
+        imgStatistic = (ImageView) ((FragmentActivity) context).findViewById(R.id.id_img_statistic);
+        imgSleepHelper = (ImageView) ((FragmentActivity) context).findViewById(R.id.id_img_sleep_helper);
+        imgSetting = (ImageView) ((FragmentActivity) context).findViewById(R.id.id_img_setting);
+    }
 
-		// mTabPager.setPageTransformer(true, );
-		listTabs.add((LinearLayout) ((FragmentActivity) context).findViewById(R.id.id_tab_last_data));
-		listTabs.add((LinearLayout) ((FragmentActivity) context).findViewById(R.id.id_tab_day_data));
-		listTabs.add((LinearLayout) ((FragmentActivity) context).findViewById(R.id.id_tab_statistic));
-		listTabs.add((LinearLayout) ((FragmentActivity) context).findViewById(R.id.id_tab_sleep_helper));
-		listTabs.add((LinearLayout) ((FragmentActivity) context).findViewById(R.id.id_tab_setting));
+    @Override
+    public void onClick(View v) {
+        resetImages();
+        switch (v.getId()) {
+            case R.id.id_tab_last_data:
+                setSelect(0);
+                break;
+            case R.id.id_tab_day_data:
+                setSelect(1);
+                break;
+            case R.id.id_tab_statistic:
+                setSelect(2);
+                break;
+            case R.id.id_tab_sleep_helper:
+                setSelect(3);
+                break;
+            case R.id.id_tab_setting:
+                setSelect(4);
+                break;
+            default:
+                break;
+        }
+    }
 
-		// catch for the order added to list. if you change, please change
-		// corresponding mapping in class Pager;
-		listImg.add((ImageView) ((FragmentActivity) context).findViewById(R.id.id_img_last_data));
-		listImg.add((ImageView) ((FragmentActivity) context).findViewById(R.id.id_img_day_data));
-		listImg.add((ImageView) ((FragmentActivity) context).findViewById(R.id.id_img_statistic));
-		listImg.add((ImageView) ((FragmentActivity) context).findViewById(R.id.id_img_sleep_helper));
-		listImg.add((ImageView) ((FragmentActivity) context).findViewById(R.id.id_img_setting));
+    private void setSelect(int i) {
+        FragmentManager fm = ((FragmentActivity) context).getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        hideFragment(transaction);
 
-		// put all of the page views into an array.
-		// save all the views of application.
-		List<Fragment> fragments = new ArrayList<>();
+        switch (i) {
+            case 0:
+                if (fragmentLastData == null) {
+                    fragmentLastData = new FragmentLastData();
+                    transaction.add(R.id.id_content, fragmentLastData);
+                } else {
+                    transaction.show(fragmentLastData);
+                }
+                imgLastData.setImageResource(R.drawable.tab_lastdata_pressed);
+                break;
+            case 1:
+                if (fragmentDayData == null) {
+                    fragmentDayData = new FragmentDayData();
+                    transaction.add(R.id.id_content, fragmentDayData);
+                } else {
+                    transaction.show(fragmentDayData);
+                }
+                imgDayData.setImageResource(R.drawable.tab_daydata_pressed);
+                break;
+            case 2:
+                if (fragmentStatistic == null) {
+                    fragmentStatistic = new FragmentStatistic();
+                    transaction.add(R.id.id_content, fragmentStatistic);
+                } else {
+                    transaction.show(fragmentStatistic);
+                }
+                imgStatistic.setImageResource(R.drawable.tab_statistic_pressed);
+                break;
+            case 3:
+                if (fragmentSleepHelper == null) {
+                    fragmentSleepHelper = new FragmentSleepHelper();
+                    transaction.add(R.id.id_content, fragmentSleepHelper);
+                } else {
+                    transaction.show(fragmentSleepHelper);
+                }
+                imgSleepHelper.setImageResource(R.drawable.tab_sleep_helper_pressed);
+                break;
+            case 4:
+                if (fragmentSetting == null) {
+                    fragmentSetting = new FragmentSetting();
+                    transaction.add(R.id.id_content, fragmentSetting);
+                } else {
+                    transaction.show(fragmentSetting);
+                }
+                imgSetting.setImageResource(R.drawable.tab_setting_pressed);
+                break;
+            default:
+                break;
+        }
+        transaction.commit();
+    }
 
-		fragments.add(new FragmentLastData());
-		fragments.add(new FragmentDayData());
-		fragments.add(new FragmentStatistic());
-		fragments.add(new FragmentSleepHelper());
-		fragments.add(new FragmentSetting());
+    private void hideFragment(FragmentTransaction transaction) {
+        if (fragmentLastData != null) {
+            transaction.hide(fragmentLastData);
+        }
+        if (fragmentDayData != null) {
+            transaction.hide(fragmentDayData);
+        }
+        if (fragmentStatistic != null) {
+            transaction.hide(fragmentStatistic);
+        }
+        if (fragmentSleepHelper != null) {
+            transaction.hide(fragmentSleepHelper);
+        }
+        if (fragmentSetting != null) {
+            transaction.hide(fragmentSetting);
+        }
+    }
 
-		// get all the pairs of image and tab;
-		// 0-lastdata;
-		mapImages.put(0, context.getResources().getDrawable(R.drawable.tab_lastdata_normal));
-		mapImages.put(1, context.getResources().getDrawable(R.drawable.tab_lastdata_pressed));
-		// 1-day data;
-		mapImages.put(2, context.getResources().getDrawable(R.drawable.tab_daydata_normal));
-		mapImages.put(3, context.getResources().getDrawable(R.drawable.tab_daydata_pressed));
-		// 2-statistic
-		mapImages.put(4, context.getResources().getDrawable(R.drawable.tab_statistic_normal));
-		mapImages.put(5, context.getResources().getDrawable(R.drawable.tab_statistic_pressed));
-		// 3-sleep helper
-		mapImages.put(6, context.getResources().getDrawable(R.drawable.tab_sleep_helper_normal));
-		mapImages.put(7, context.getResources().getDrawable(R.drawable.tab_sleep_helper_pressed));
-		// 4-setting
-		mapImages.put(8, context.getResources().getDrawable(R.drawable.tab_settings_normal));
-		mapImages.put(9, context.getResources().getDrawable(R.drawable.tab_settings_pressed));
+    private void resetImages() {
+        imgLastData.setImageResource(R.drawable.tab_lastdata_normal);
+        imgDayData.setImageResource(R.drawable.tab_daydata_normal);
+        imgStatistic.setImageResource(R.drawable.tab_statistic_normal);
+        imgSleepHelper.setImageResource(R.drawable.tab_sleep_helper_normal);
+        imgSetting.setImageResource(R.drawable.tab_setting_normal);
+    }
 
-		mTabPager.addOnPageChangeListener(new MyOnPageChangeListener());
-
-		for (int i = 0; i < listTabs.size(); i++) {
-			listTabs.get(i).setOnClickListener(new MyOnClickListener(mTabPager, i));
-		}
-		// set the page adapter.
-		MyFragmentPagerAdapter mPagerAdapter = new MyFragmentPagerAdapter(
-				((FragmentActivity) context).getSupportFragmentManager(), fragments);
-
-		mTabPager.setAdapter(mPagerAdapter);
-	}
-
-	public class MyOnClickListener implements OnClickListener {
-		private int index = 0;
-		private ViewPager mTabPager;
-
-		public MyOnClickListener(ViewPager mTabPager, int i) {
-			index = i;
-			this.mTabPager = mTabPager;
-		}
-
-		@Override
-		public void onClick(View v) {
-			mTabPager.setCurrentItem(index);
-		}
-	}
-
-	/*
-	 * monitor the page switching
-	 */
-	public class MyOnPageChangeListener implements OnPageChangeListener {
-
-		@Override
-		public void onPageSelected(int arg0) {
-			// change the image of tabs when page is selected.
-			listImg.get(arg0).setImageDrawable(mapImages.get(arg0 * 2 + 1));
-			for (int i = 0; i < listImg.size(); i++) {
-				if (arg0 == i)
-					continue;
-				listImg.get(i).setImageDrawable(mapImages.get(i * 2));
-			}
-		}
-
-		@Override
-		public void onPageScrolled(int arg0, float arg1, int arg2) {
-		}
-
-		@Override
-		public void onPageScrollStateChanged(int arg0) {
-		}
-	}
 }

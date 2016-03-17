@@ -4,23 +4,19 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#aaa"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="#aaa"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <!-- 图表显示区 -->
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/id_tabpager"
+        <FrameLayout android:id="@+id/id_content"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_weight="1" >
-        </android.support.v4.view.ViewPager>
+            android:layout_weight="1"></FrameLayout>
 
         <include layout="@layout/main_bottom" />
     </LinearLayout>

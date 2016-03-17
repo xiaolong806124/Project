@@ -18,9 +18,9 @@ public class MyApplication extends Application {
     /**
      * Web server's IP address.
      */
-    public static String ipAddressWeb = "115.28.153.25";// "192.168.0.105";//
-    // ;"219.224.156.137";//
-    public static String ipAddressWIFI = "192.168.0.106";// "192.168.0.105";
+    public static String ipAddressWeb = "115.28.153.25";// "192.168.0.105";
+
+    public static String ipAddressWIFI = "192.168.0.104";
     /**
      * TCP/IP Server's port used to communicate with clients.
      */
