@@ -1,6 +1,5 @@
 package com.project.others;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;

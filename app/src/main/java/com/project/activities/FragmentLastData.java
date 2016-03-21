@@ -57,6 +57,7 @@ public class FragmentLastData extends Fragment {
             @Override
             public void run() {
                 sendCommand(0);
+                Log.i("FragmentLastData", "send command.");
             }
         }, new Date(), 3 * 1000);
     }

@@ -33,6 +33,7 @@
     <string name="str_statistic">历史统计</string>
     <string name="str_sleep_helper">助眠</string>
     <string name="str_setting">设置</string>
+    <string name="str_internet"> 当前网络不可用，请设置</string>
 
     <!-- Activity Song Add -->
     <string name="str_add_song">添加音乐</string>

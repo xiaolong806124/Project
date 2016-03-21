@@ -46,7 +46,7 @@ public class SocketService extends Service {
             @Override
             public void run() {
                 try {
-                    if (null != MyApplication.socket && MyApplication.socket.isConnected()) {
+                    if (null != MyApplication.socket && MyApplication.socket.isConnected() && !MyApplication.socket.isClosed()) {
                         inputThread = new ClientInputThread(MyApplication.socket);
                         outThread = new ClientOutputThread(MyApplication.socket);
                         inputThread.start();
@@ -71,13 +71,15 @@ public class SocketService extends Service {
 
     @Override
     public void onDestroy() {
+        super.onDestroy();
         if (inputThread != null) {
             inputThread.setFlag(false);
+            inputThread.interrupt();
         }
         if (outThread != null) {
             outThread.setFlag(false);
+            outThread.interrupt();
         }
-        super.onDestroy();
     }
 
     @Override

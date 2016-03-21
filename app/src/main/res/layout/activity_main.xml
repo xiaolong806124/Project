@@ -12,8 +12,16 @@
         android:background="#aaa"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/id_txtInternet"
+            android:layout_width="match_parent"
+            android:layout_height="20sp"
+            android:text="@string/str_internet"
+            android:textColor="#a00"
+            android:visibility="gone" />
         <!-- 图表显示区 -->
-        <FrameLayout android:id="@+id/id_content"
+        <FrameLayout
+            android:id="@+id/id_content"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"></FrameLayout>

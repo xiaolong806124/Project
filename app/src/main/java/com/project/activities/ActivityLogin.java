@@ -27,9 +27,7 @@ public class ActivityLogin extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-
-		// 1.if "auto" is true saved in shared preference, go to MainActivity
-		// directly.
+		// 1.if "auto" is true saved in shared preference, go to MainActivity directly.
 		boolean auto = getSharedPreferences("user", Context.MODE_PRIVATE).getBoolean("auto", false);
 		if (auto) {
 			Intent intent = new Intent();
@@ -37,13 +35,11 @@ public class ActivityLogin extends Activity {
 			startActivity(intent);
 			finish();
 		}
-
 		// 2.controllers in this view.
 		btnLogin = (Button) findViewById(R.id.id_btn_login);
 		editUserName = (EditText) findViewById(R.id.id_edit_username_in_login);
 		editPassword = (EditText) findViewById(R.id.id_edit_password_in_login);
-
-		// 4.add onclick event to EditText txtRegister.
+		// 3.add onclick event to EditText txtRegister.
 		((TextView) findViewById(R.id.id_txt_register)).setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -54,11 +50,9 @@ public class ActivityLogin extends Activity {
 				finish();
 			}
 		});
-
-		// 5.add onclick event to Button btnLogin.
+		// 4.add onclick event to Button btnLogin.
 		btnLogin.setOnClickListener(new LoginButtonClick());
-
-		// 6. add click event to TextView forget_password.
+		// 5. add click event to TextView forget_password.
 		((TextView) findViewById(R.id.id_txt_forget_password)).setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -94,7 +88,6 @@ public class ActivityLogin extends Activity {
 					edit.putBoolean("auto", true);
 					edit.putString("username", userName);
 					edit.commit();
-
 					// 2. go to MainActivity.
 					Intent intent = new Intent();
 					intent.setClass(ActivityLogin.this, ActivityMain.class);

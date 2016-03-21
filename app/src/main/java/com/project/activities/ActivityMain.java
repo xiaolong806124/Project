@@ -1,59 +1,41 @@
 package com.project.activities;
 
-import android.annotation.SuppressLint;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.project.R;
-import com.project.application.MyApplication;
-import com.project.data_process.SocketService;
+import com.project.others.ConnectionChangeReceiver;
 import com.project.others.Pager;
 
-import java.util.Timer;
-
-@SuppressLint("InflateParams")
 public class ActivityMain extends FragmentActivity {
 
     private String TAG = "ActivityMain";
-
-    private ServiceConnection conn;
+    ConnectionChangeReceiver myReceiver;
+    TextView textView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        // start this activity without opening the keyboard.
+        // 1.start this activity without opening the keyboard.
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        // init pagers in main activity.
+        // 2.init pagers in main activity.
         new Pager(ActivityMain.this).setPager();
-        // Test. Bind service
-        bindSocketService();
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+        textView = (TextView) findViewById(R.id.id_txtInternet);
+        // 3. register a broadreceiver.
+        registerMyReceiver();
     }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // Disconnect the service.
-        if (conn != null)
-            destroySocketService();
-    }
-
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -77,30 +59,17 @@ public class ActivityMain extends FragmentActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-    private void bindSocketService() {
-        Log.i(TAG, "start a service to connect Socket");
-
-        Intent intent1 = new Intent(ActivityMain.this, SocketService.class);
-
-        conn = new ServiceConnection() {
-            @Override
-            public void onServiceConnected(ComponentName name, IBinder service) {
-                MyApplication.socketService = ((SocketService.MyBinder) service).getService();
-            }
-
-            @Override
-            public void onServiceDisconnected(ComponentName name) {
-                MyApplication.socketService = null;
-            }
-        };
-
-        bindService(intent1, conn, Context.BIND_AUTO_CREATE);
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(myReceiver);
     }
 
-    private void destroySocketService() {
-        Log.i(TAG, "stop a service to connect Socket");
-        if (conn != null)
-            unbindService(conn);
+    private void registerMyReceiver() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        if (textView != null) {
+            myReceiver = new ConnectionChangeReceiver(this, textView);
+        }
+        this.registerReceiver(myReceiver, filter);
     }
 }
