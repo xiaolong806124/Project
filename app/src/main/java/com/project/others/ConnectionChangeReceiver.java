@@ -39,7 +39,7 @@ public class ConnectionChangeReceiver extends BroadcastReceiver {
             flag = activeNetwork.getType() == ConnectivityManager.TYPE_WIFI ||
                     activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE;
         }
-        // 2. do something based on the state of internet.
+        // 2. do something based on the status of internet.
         if (flag) {
             //1. if working
             txtView.setVisibility(View.GONE);
